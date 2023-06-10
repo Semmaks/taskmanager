@@ -6,7 +6,7 @@
 </head>
 <body>
   <h3>Авторизация</h3>
-  <form th:action="@{/login}" role="form" method="post">
+  <form th:action="@{/auth/login}" role="form" method="post">
       <label for="login">Введите логин: </label>
       <input type="text" name="username" id="login"/>
       <br/>
@@ -17,6 +17,6 @@
 <!--      <input type="hidden" name="_csrf" value="${_csrf.token}">-->
       <input type="submit" value="Войти"/>
   </form>
-  <a href="/registration">Зарегистрироваться</a>
+  <a href="/auth/registration">Зарегистрироваться</a>
 </body>
 </html>

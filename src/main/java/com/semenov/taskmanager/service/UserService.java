@@ -15,6 +15,12 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // TODO: 10.06.2023 сделать возможность добавления пользователей с ролью ROLE_ADMIN
+    /**
+     * Метод добавление/регистрации пользователя
+     * Если передаваемый клиент уже есть, возвращается false
+     * @param user
+     */
     public boolean createUser(User user) {
         String userLogin = user.getLogin();
         if (userRepository.findByLogin(userLogin) != null) return false;
