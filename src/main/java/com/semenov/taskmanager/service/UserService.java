@@ -1,10 +1,13 @@
 package com.semenov.taskmanager.service;
 
+import com.semenov.taskmanager.model.Role;
 import com.semenov.taskmanager.model.User;
 import com.semenov.taskmanager.repository.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -25,7 +28,7 @@ public class UserService {
     public boolean createUser(User user) {
         String userLogin = user.getLogin();
         if (userRepository.findByLogin(userLogin) != null) return false;
-        user.getRoles().add(User.Role.ROLE_USER);
+        user.getRoles().add(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -39,5 +42,9 @@ public class UserService {
     public User getUser(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         return user;
+    }
+
+    public List<User> getUserList() {
+        return userRepository.findAll();
     }
 }

@@ -28,14 +28,14 @@ public class LoginController {
     }
 
     @GetMapping("/registration")
-    public String newUser(Model model) {
+    public String registerUser(Model model) {
         model.addAttribute("user", new User());
         return "/auth/registration";
     }
 
     // Регистрация пользователя
     @PostMapping("/registration")
-    public String createUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
+    public String createNewUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, Model model) {
         if (!userService.createUser(user)) {
             // случай, если такой пользователь уже существует:
             model.addAttribute("errorMessage", "Пользователь с таким логином уже существует");

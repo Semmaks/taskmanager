@@ -29,7 +29,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private Long id;
 
     @NotBlank
@@ -41,7 +41,7 @@ public class User implements UserDetails {
     private String login;
 
     @NotBlank
-    @Column(name = "password", length = 100)
+    @Column(name = "password", unique = true)
     private String password;
 
     @Column(name = "created_time")
@@ -51,15 +51,6 @@ public class User implements UserDetails {
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
-
-    public enum Role implements GrantedAuthority {
-        ROLE_USER, ROLE_ADMIN;
-
-        @Override
-        public String getAuthority() {
-            return name();
-        }
-    }
 
     public User() {
     }

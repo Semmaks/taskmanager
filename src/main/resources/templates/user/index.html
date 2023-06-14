@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" >
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+    <link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">TM</a>
+            <div class="navbar-wrap">
+                <ul class="navbar-menu">
+                    <li><a th:href="@{/user/index}">Профиль</a></li>
+                    <li><a th:href="@{/user/task-list}">Все задачи</a></li>
+                    <li><a th:href="@{/user/party}">Участники</a></li>
+                    <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
+                </ul>
+                <a th:href="@{/logout}" class="logout">Выйти</a>
+            </div>
+        </div>
+    </nav>
     <h1>
         <span th:text="${user.getName()}"></span>, добро пожаловать на главную старницу !!!
     </h1>
-
+    <p>Ваши задачи:</p>
 </body>
 </html>

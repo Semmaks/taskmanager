@@ -34,13 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .antMatchers("/user/**").hasAuthority("ROLE_USER")
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/css/**", "/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/auth/login")
                 .defaultSuccessUrl("/user/index", true)
                 .and()
-                .logout().permitAll().logoutSuccessUrl("/");
+                .logout().permitAll().logoutSuccessUrl("/auth/login");
     }
 
     @Bean

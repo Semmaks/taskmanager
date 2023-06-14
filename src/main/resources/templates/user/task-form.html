@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая задача</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="navbar-brand">TM</a>
+      <div class="navbar-wrap">
+        <ul class="navbar-menu">
+          <li><a th:href="@{/user/index}">Профиль</a></li>
+          <li><a th:href="@{/user/task-list}">Все задачи</a></li>
+          <li><a th:href="@{/user/party}">Участники</a></li>
+          <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
+        </ul>
+        <a th:href="@{/logout}" class="logout">Выйти</a>
+      </div>
+    </div>
+  </nav>
+  <form th:action="@{/user/task-form}" role="form" method="post" th:object="${task}">
+      <label for="title">Название: </label>
+      <input type="text" th:field="*{title}" id="title"/>
+      <br/>
+      <label for="description">Описание: </label>
+      <input type="text" th:field="*{description}" id="description"/>
+      <br/>
+      <select th:field="*{priority}">
+          <option th:value="LOW_PRIORITY" th:text="LOW"></option>
+          <option th:value="MEDIUM_PRIORITY" th:text="MEDIUM"></option>
+          <option th:value="HIGH_PRIORITY" th:text="HIGH"></option>
+      </select>
+      <br/>
+      <input type="submit" value="Зарегистрироваться"/>
+  </form>
+  <!--    <select id="selectID" >-->
+  <!--      <option th:each="priority : ${listPriority}" value=""></option>-->
+  <!--      <option value=””>Green</option>-->
+  <!--      <option value=”YE”>Yellow</option>-->
+  <!--      <option value=”BL”>Black</option>-->
+  <!--    </select>-->
+<!--  <select th:field="*{task.priority}">-->
+<!--      <option th:value="LOW_PRIORITY" th:text="LOW"></option>-->
+<!--      <option th:value="MEDIUM_PRIORITY" th:text="MEDIUM"></option>-->
+<!--      <option th:value="HIGH_PRIORITY" th:text="HIGH"></option>-->
+<!--  </select>-->
+</body>
+</html>
