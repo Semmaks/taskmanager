@@ -20,12 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         this.customUserDetailsService = customUserDetailsService;
     }
 
+    // метод для аутентификации
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
 
+    // метод для авторизации
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -38,11 +40,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .formLogin().loginPage("/auth/login")
                 .defaultSuccessUrl("/user/index", true)
                 .and()
-                .logout().permitAll();
+                .logout().permitAll().logoutSuccessUrl("/");
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
         return new BCryptPasswordEncoder(5);
     }
 }

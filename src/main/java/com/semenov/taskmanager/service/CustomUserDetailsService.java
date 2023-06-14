@@ -20,16 +20,20 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * обязательный метод для spring security
+     * @param login
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        return userRepository.findByLogin(login);
-//        User user = userRepository.findByLogin(login);
-//        if(user == null) {
-//            throw new UsernameNotFoundException("User not found");
-//        }
-//
-//        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(“user”));
-//
-//        return new User(user.getLogin(), user.getPassword(), authorities);
+        User user = userRepository.findByLogin(login);
+        if(user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return user;
     }
+
 }

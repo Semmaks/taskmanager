@@ -8,10 +8,10 @@
   <h3>Авторизация</h3>
   <form th:action="@{/auth/login}" role="form" method="post">
       <label for="login">Введите логин: </label>
-      <input type="text" name="username" id="login"/>
+      <input type="text" name="username" placeholder="Логин" id="login"/>
       <br/>
       <label for="password">Введите пароль: </label>
-      <input type="text" name="password" id="password"/>
+      <input type="password" name="password" placeholder="Пароль" id="password"/>
       <br/>
 <!--      поле для csrf токена(защита от межсайтовых атак) -->
 <!--      <input type="hidden" name="_csrf" value="${_csrf.token}">-->

@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,20 +32,21 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank
     @Column(name = "name")
     private String name;
 
+    @NotBlank
     @Column(name = "login", unique = true)
     private String login;
 
-
+    @NotBlank
     @Column(name = "password", length = 100)
     private String password;
 
     @Column(name = "created_time")
     private LocalDateTime dateOfCreated;
 
-//    @Column(name = "role")
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name="user_id"))
     @Enumerated(EnumType.STRING)
@@ -58,17 +61,12 @@ public class User implements UserDetails {
         }
     }
 
-//    public User(String username, String password, Set<Role> roles) {
-//        this.name = username;
-//        this.password = password;
-//        this.roles = ;
-//    }
-
     public User() {
     }
 
     @PrePersist
     private void initDateOfCreated() {
+        // генерируем поле даты перед вставкой сущности в БД
         dateOfCreated = LocalDateTime.now();
     }
 

@@ -2,6 +2,7 @@ package com.semenov.taskmanager.service;
 
 import com.semenov.taskmanager.model.User;
 import com.semenov.taskmanager.repository.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class UserService {
 
     // TODO: 10.06.2023 сделать возможность добавления пользователей с ролью ROLE_ADMIN
     /**
-     * Метод добавление/регистрации пользователя
+     * Метод добавления/регистрации пользователя
      * Если передаваемый клиент уже есть, возвращается false
      * @param user
      */
@@ -28,5 +29,15 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
+    }
+
+    /**
+     * Метод получения аутентифицированного пользователя
+     * @param authentication
+     * @return
+     */
+    public User getUser(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+        return user;
     }
 }
