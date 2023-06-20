@@ -1,37 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>Регистрация</title>
-</head>
-<body>
-  <div th:if="${param.error}">
-    Invalid username and password.
-  </div>
-  <div th:if="${param.logout}">
-    You have been logged out.
-  </div>
-  <form th:action="@{/auth/registration}" role="form" method="post" th:object="${user}">
-    <label for="name">Введите имя: </label>
-    <input type="text" th:field="*{name}" id="name"/>
-    <span style="color:red" class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
-    <br/>
-    <label for="login">Введите логин: </label>
-    <input type="text" th:field="*{login}" id="login"/>
-    <span style="color:red" class="field-error" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Name Error</span>
-    <br/>
-    <label for="password">Введите пароль: </label>
-    <input type="text" th:field="*{password}" id="password"/>
-    <span style="color:red" class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</span>
-    <br/>
-    <input type="submit" value="Зарегистрироваться"/>
-  </form>
-  <span style="color:red" th:text="${errorMessage}"></span>
-  <h4>Уже есть аккаунт?</h4>
-  <div>
-    <a th:href="@{/auth/login}" style="text-decoration: none ">
-      Войти
-    </a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div th:if="${param.error}">Invalid username and password.</div>
+    <div th:if="${param.logout}">You have been logged out.</div>
+    <form
+      class="form"
+      th:action="@{/auth/registration}"
+      role="form"
+      method="post"
+      th:object="${user}"
+    >
+      <h3 class="form_title">Регистрация</h3>
+      <div class="form_grup">
+        <label class="form_label" for="name">Введите имя: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          th:field="*{name}"
+          id="name"
+        />
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="surname">Введите фамилию: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          th:field="*{surname}"
+          id="surname"
+        />
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="age">Ваш возраст: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          th:field="*{age}"
+          id="age"
+        />
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="login">Введите логин: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          th:field="*{login}"
+          id="login"
+        />
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="password">Введите пароль: </label>
+        <br>
+        <input
+          class="form_input"
+          type="password"
+          th:field="*{password}"
+          id="password"
+        />
+      </div>
+      <input class="form_button" type="submit" value="Зарегистрироваться" />
+      <span style="color: red" th:text="${errorMessage}"></span>
+      <h4>Уже есть аккаунт?</h4>
+      <div>
+        <a th:href="@{/auth/login}" style="text-decoration: none"> Войти </a>
+      </div>
+    </form>
+  </body>
 </html>

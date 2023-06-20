@@ -44,7 +44,7 @@ public class LoginController {
         } else if (bindingResult.hasErrors()) {
             return "/auth/registration";
 
-        } else return "/user/index";
+        } else return "redirect:/auth/login";
     }
 
 }

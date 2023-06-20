@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Команда</title>
     <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="navbar-brand">TM</a>
-      <div class="navbar-wrap">
-        <ul class="navbar-menu">
-          <li><a th:href="@{/user/index}">Профиль</a></li>
-          <li><a th:href="@{/user/task-list}">Все задачи</a></li>
-          <li><a th:href="@{/user/party}">Участники</a></li>
-          <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
-        </ul>
-        <a th:href="@{/logout}" class="logout">Выйти</a>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand">TM</a>
+        <div class="navbar-wrap">
+          <ul class="navbar-menu">
+            <li><a th:href="@{/user/index}">Профиль</a></li>
+            <li><a th:href="@{/user/task-list}">Все задачи</a></li>
+            <li><a th:href="@{/user/party}">Участники</a></li>
+            <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
+          </ul>
+          <a th:href="@{/logout}" class="logout">Выйти</a>
+        </div>
       </div>
-    </div>
-  </nav>
-  <p>Список сотрудников:</p>
-  <table>
-    <tr th:each="user : ${userList}">
-      <td th:text="${user.name}"></td>
-      <td th:text="${user.login}"></td>
-      <td th:text="${user.roles}"></td>
-    </tr>
-  </table>
-</body>
+    </nav>
+    <p></p>
+    <p></p>
+    <table>
+      <caption>
+        Список сотрудников
+      </caption>
+      <tr>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+        <th>Дата регистрации</th>
+      </tr>
+      <tr th:each="user : ${userList}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.dateOfCreated}"></td>
+      </tr>
+    </table>
+  </body>
 </html>

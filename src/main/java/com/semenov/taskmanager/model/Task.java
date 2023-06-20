@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,6 +34,9 @@ public class Task {
 
     @Column(name = "created_time")
     private LocalDateTime dateOfCreated;
+
+    @Column(name = "end_date")
+    private LocalDate dateOfEnd;
 
     @PrePersist
     private void initDateOfCreated() {
@@ -65,6 +69,18 @@ public class Task {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public LocalDateTime getDateOfCreated() {
+        return dateOfCreated;
+    }
+
+    public LocalDate getDateOfEnd() {
+        return dateOfEnd;
+    }
+
+    public void setDateOfEnd(String dateOfEnd) {
+        this.dateOfEnd = LocalDate.parse(dateOfEnd);
     }
 }
 

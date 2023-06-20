@@ -1,24 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head>
-    <meta charset="UTF-8">
+<html
+  lang="en"
+  xmlns:th="https://www.thymeleaf.org"
+  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+  <head>
+    <meta charset="UTF-8" />
     <title>Вход в TaskManager</title>
     <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <h3>Авторизация</h3>
-  <form th:action="@{/auth/login}" role="form" method="post">
-      <label for="login">Введите логин: </label>
-      <input type="text" name="username" placeholder="Логин" id="login"/>
-      <br/>
-      <label for="password">Введите пароль: </label>
-      <input type="password" name="password" placeholder="Пароль" id="password"/>
-      <br/>
-<!--      поле для csrf токена(защита от межсайтовых атак) -->
-<!--      <input type="hidden" name="_csrf" value="${_csrf.token}">-->
-      <input type="submit" value="Войти"/>
-  </form>
-  <a href="/auth/registration">Зарегистрироваться</a>
-</body>
+  </head>
+  <body>
+    <form class="form" th:action="@{/auth/login}" role="form" method="post">
+      <h3 class="form_title">Авторизация</h3>
+      <div class="form_grup">
+        <label class="form_label" for="login">Введите логин: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          name="username"
+          id="login"
+        />
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="password">Введите пароль: </label>
+        <br>
+        <input
+          class="form_input"
+          type="password"
+          name="password"
+          id="password"
+        />
+      </div>
+      <!--      поле для csrf токена(защита от межсайтовых атак) -->
+      <!--      <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+      <input class="form_button" type="submit" value="Войти" />
+      <p></p>
+      <a href="/auth/registration">Зарегистрироваться</a>
+    </form>
+  </body>
 </html>

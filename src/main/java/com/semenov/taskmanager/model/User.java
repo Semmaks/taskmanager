@@ -17,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
@@ -35,6 +34,13 @@ public class User implements UserDetails {
     @NotBlank
     @Column(name = "name")
     private String name;
+
+    @NotBlank
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "age")
+    private Integer age;
 
     @NotBlank
     @Column(name = "login", unique = true)
@@ -83,6 +89,26 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDateTime getDateOfCreated() {
+        return dateOfCreated;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getPassword() {

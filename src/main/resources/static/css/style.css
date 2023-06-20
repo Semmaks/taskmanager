@@ -2,83 +2,176 @@
  * Базовые стили для всего сайта
  */
 body {
-    position: relative;
-    font-family: 'Noto Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #000;
-    min-width: 320px;
-    overflow-x: hidden;
-    height: auto;
+  position: relative;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #000;
+  min-width: 320px;
+  overflow-x: hidden;
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
 
+table {
+  margin:  20px auto
+}
 .navbar {
-    width: 100%;
-    height: 70px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
-
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #b6c87f;
 }
 
-.navbar .container{
-    height: inherit;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar .container {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-menu {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 0;
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 .navbar-menu li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .navbar-menu li a {
-    display: inline-block;
-    color: #000;
-    opacity: 0.6;
-    text-decoration: none;
-    padding: 10px;
-    transition: all 0.7s ease-in-out;
+  display: inline-block;
+  color: #000;
+  opacity: 0.6;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .navbar-menu li a:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .navbar-wrap {
-    display: flex;
-    flex-flow: row nowrap;
+  display: flex;
+  flex-flow: row nowrap;
 }
 
 .logout {
-    margin-left: 30px;
-    padding: 10px 30px;
-    background-color: coral;
-    border-radius: 100px;
-    color: #fff;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(255, 127, 80, .2);
-    transition: all .1s ease-in-out;
+  margin: 10px 20px;
+  padding: 10px 15px;
+  background-color: rgb(235, 16, 16);
+  border-radius: 60px;
+  color: #190404;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(245, 16, 4, 0.903);
+  transition: all 0.1s ease-in-out;
 }
 
 .logout:hover {
-    transform: scale(1.04);
-    color: #fff;
-    box-shadow: 0 9px 9px rgba(255, 127, 80, .5);
+  transform: scale(1.04);
+  color: #fff;
+  box-shadow: 0 9px 9px rgba(245, 3, 3, 0.668);
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 26px;
-    text-decoration: none;
-    color: #000;
+  font-weight: 700;
+  font-size: 26px;
+  text-decoration: none;
+  color: #000;
 }
 
 .navbar-brand:hover {
-    color: coral;
-    transition: all 0.7s ease-in-out;
+  color: coral;
+  transition: all 0.7s ease-in-out;
+}
+
+table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, serif;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 5px;
+  background: #ece9e0;
+  color: #656665;
+  border: 16px solid #ece9e0;
+  border-radius: 20px;
+}
+th {
+  font-size: 18px;
+  padding: 10px;
+}
+td {
+  background: #f5d7bf;
+  padding: 10px;
+}
+
+.form {
+  width: 300px;
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px #ccc;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  margin: 20px auto;
+}
+
+.form_title {
+  text-align: center;
+  margin: 0 0 32px 0;
+  font-weight: normal;
+}
+
+.form_button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #0071f0;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form_grup {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.form_input {
+  width: 100%;
+  padding: 0 0 10px 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: transparent;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form_label {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  color: #9e9e9e;
+  transition: 0.3s;
+}
+
+.form_button:focus,
+.form_button:hover{
+  background-color: rgba(0, 113, 240, 0.7);
+}
+
+.form_input:focus {
+  border-bottom: 1px solid #1a73a8;
+}
+
+.form_input:focus ~ .form_label,
+.form_input:not(:placeholder-shown) ~ .form_label {
+  top: -18px;
+  font-size:12px;
+  color: #e0e0e0;
 }

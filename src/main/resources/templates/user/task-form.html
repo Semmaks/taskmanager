@@ -1,50 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Новая задача</title>
-    <link rel="stylesheet" href="/css/style.css"/>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="navbar-brand">TM</a>
-      <div class="navbar-wrap">
-        <ul class="navbar-menu">
-          <li><a th:href="@{/user/index}">Профиль</a></li>
-          <li><a th:href="@{/user/task-list}">Все задачи</a></li>
-          <li><a th:href="@{/user/party}">Участники</a></li>
-          <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
-        </ul>
-        <a th:href="@{/logout}" class="logout">Выйти</a>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand">TM</a>
+        <div class="navbar-wrap">
+          <ul class="navbar-menu">
+            <li><a th:href="@{/user/index}">Профиль</a></li>
+            <li><a th:href="@{/user/task-list}">Все задачи</a></li>
+            <li><a th:href="@{/user/party}">Участники</a></li>
+            <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
+          </ul>
+          <a th:href="@{/logout}" class="logout">Выйти</a>
+        </div>
       </div>
-    </div>
-  </nav>
-  <form th:action="@{/user/task-form}" role="form" method="post" th:object="${task}">
-      <label for="title">Название: </label>
-      <input type="text" th:field="*{title}" id="title"/>
-      <br/>
-      <label for="description">Описание: </label>
-      <input type="text" th:field="*{description}" id="description"/>
-      <br/>
-      <select th:field="*{priority}">
+    </nav>
+    <form
+      class="form"
+      th:action="@{/user/task-form}"
+      role="form"
+      method="post"
+      th:object="${task}"
+      id="form"
+    >
+      <h3 class="form_title">Добавление задачи</h3>
+      <div class="form_grup">
+        <label class="form_label" for="title">Название: </label>
+        <br>
+        <input
+          class="form_input"
+          type="text"
+          th:field="*{title}"
+          id="title"
+        />
+      </div>
+      <br />
+      <div class="form_grup">
+        <label class="form_label" for="description">Описание: </label>
+        <br>
+        <textarea class="form_input" form="form" th:field="*{description}" cols="30" wrap="hard"
+                  rows="5"  id="description" maxlength="1000">
+        </textarea>
+      </div>
+      <p></p>
+      <div class="form_grup">
+        <select th:field="*{priority}">
           <option th:value="LOW_PRIORITY" th:text="LOW"></option>
           <option th:value="MEDIUM_PRIORITY" th:text="MEDIUM"></option>
           <option th:value="HIGH_PRIORITY" th:text="HIGH"></option>
-      </select>
-      <br/>
-      <input type="submit" value="Зарегистрироваться"/>
-  </form>
-  <!--    <select id="selectID" >-->
-  <!--      <option th:each="priority : ${listPriority}" value=""></option>-->
-  <!--      <option value=””>Green</option>-->
-  <!--      <option value=”YE”>Yellow</option>-->
-  <!--      <option value=”BL”>Black</option>-->
-  <!--    </select>-->
-<!--  <select th:field="*{task.priority}">-->
-<!--      <option th:value="LOW_PRIORITY" th:text="LOW"></option>-->
-<!--      <option th:value="MEDIUM_PRIORITY" th:text="MEDIUM"></option>-->
-<!--      <option th:value="HIGH_PRIORITY" th:text="HIGH"></option>-->
-<!--  </select>-->
-</body>
+        </select>
+      </div>
+      <div class="form_grup">
+        <label class="form_label" for="date">Дата окончания: </label>
+        <br>
+        <input
+                class="form_input"
+                type="date"
+                th:field="*{dateOfEnd}"
+                id="date"
+        />
+      </div>
+      <input class="form_button" type="submit" value="Создать" />
+    </form>
+  </body>
 </html>

@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
     <title>Список задач</title>
-    <link rel="stylesheet" href="/css/style.css"/>
-</head>
-<body>
-  <nav class="navbar">
-    <div class="container">
-      <a href="#" class="navbar-brand">TM</a>
-      <div class="navbar-wrap">
-        <ul class="navbar-menu">
-          <li><a th:href="@{/user/index}">Профиль</a></li>
-          <li><a th:href="@{/user/task-list}">Все задачи</a></li>
-          <li><a th:href="@{/user/party}">Участники</a></li>
-          <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
-        </ul>
-        <a th:href="@{/logout}" class="logout">Выйти</a>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="#" class="navbar-brand">TM</a>
+        <div class="navbar-wrap">
+          <ul class="navbar-menu">
+            <li><a th:href="@{/user/index}">Профиль</a></li>
+            <li><a th:href="@{/user/task-list}">Все задачи</a></li>
+            <li><a th:href="@{/user/party}">Участники</a></li>
+            <li><a th:href="@{/user/task-form}">Создать задачу</a></li>
+          </ul>
+          <a th:href="@{/logout}" class="logout">Выйти</a>
+        </div>
       </div>
-    </div>
-  </nav>
-  <p>Список задач: </p>
-</body>
+    </nav>
+    <p></p>
+    <p></p>
+    <table>
+      <caption>
+        Список задач
+      </caption>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Приоритет</th>
+        <th>Дата окончания</th>
+      </tr>
+      <tr th:each="task : ${taskList}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.priority}"></td>
+        <td th:text="${task.dateOfEnd}"></td>
+      </tr>
+    </table>
+  </body>
 </html>
