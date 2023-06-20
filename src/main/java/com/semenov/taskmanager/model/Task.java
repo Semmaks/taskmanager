@@ -47,6 +47,10 @@ public class Task {
     public Task() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }

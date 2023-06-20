@@ -23,20 +23,27 @@
     <p></p>
     <p></p>
     <table>
-      <caption>
-        Список задач
+      <caption class="caption">
+        <b>Список задач</b>
       </caption>
       <tr>
         <th>Название</th>
         <th>Описание</th>
         <th>Приоритет</th>
         <th>Дата окончания</th>
+        <th>Закрыть задачу</th>
       </tr>
       <tr th:each="task : ${taskList}">
         <td th:text="${task.title}"></td>
         <td th:text="${task.description}"></td>
         <td th:text="${task.priority}"></td>
         <td th:text="${task.dateOfEnd}"></td>
+        <td>
+          <form th:action="@{/user/task-list/{id}(id=${task.getId()})}" th:method="DELETE">
+            <input type="hidden" name="_method" value="delete">
+            <input class="delete-button" type="submit" value="Закрыть"/>
+          </form>
+        </td>
       </tr>
     </table>
   </body>

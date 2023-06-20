@@ -21,7 +21,7 @@ table {
   width: 100%;
   height: 70px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #b6c87f;
+  background-color: #40b738db;
 }
 
 .navbar .container {
@@ -84,7 +84,7 @@ table {
 }
 
 .navbar-brand:hover {
-  color: coral;
+  color: rgb(10, 29, 152);
   transition: all 0.7s ease-in-out;
 }
 
@@ -174,4 +174,22 @@ td {
   top: -18px;
   font-size:12px;
   color: #e0e0e0;
+}
+
+.delete-button {
+  margin:  13px 25px;
+  padding: 10px 15px;
+  background-color: rgb(235, 16, 16);
+  border-radius: 10px;
+  color: #fff;
+}
+
+.caption {
+  font-size: x-large;
+  text-transform: uppercase;
+}
+
+.h1 {
+  margin-left: 50px;
+  margin-top: 30px;
 }
